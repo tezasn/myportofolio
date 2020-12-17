@@ -42,13 +42,13 @@
     </div>
     <div class="hero">
       <div class="content">
-        <h1>Beautifully Crafted Web Experience</h1>
-        <div class="meet">
+        <h1 class="stagger1">Beautifully Crafted Web Experience</h1>
+        <div class="meet stagger1">
           <span>&#8615;</span>
           <p>Meet Teza Sulistyan N</p>
         </div>
         <svg
-          class="scroll"
+          class="scroll stagger1"
           width="40"
           height="77"
           viewBox="0 0 40 77"
@@ -64,7 +64,14 @@
             stroke="white"
             stroke-width="8"
           />
-          <ellipse cx="20" cy="25" rx="11.3043" ry="13" fill="white" />
+          <ellipse
+            class="circle"
+            cx="20"
+            cy="25"
+            rx="11.3043"
+            ry="13"
+            fill="white"
+          />
         </svg>
       </div>
       <svg
@@ -74,9 +81,25 @@
         fill="none"
         class="hero-design"
       >
-        <rect x="252" width="126" height="113" rx="20" fill="#6E00FF" />
-        <rect x="252" y="233" width="126" height="113" rx="20" fill="#6E00FF" />
         <rect
+          class="square-anim"
+          x="252"
+          width="126"
+          height="113"
+          rx="20"
+          fill="#6E00FF"
+        />
+        <rect
+          class="square-anim"
+          x="252"
+          y="233"
+          width="126"
+          height="113"
+          rx="20"
+          fill="#6E00FF"
+        />
+        <rect
+          class="square-anim"
           x="378"
           y="115"
           width="126"
@@ -86,6 +109,7 @@
           fill-opacity="0.4"
         />
         <rect
+          class="square-anim"
           y="221"
           width="126"
           height="113"
@@ -93,10 +117,26 @@
           fill="white"
           fill-opacity="0.4"
         />
-        <rect x="126" y="113" width="126" height="113" rx="20" fill="white" />
-        <rect x="126" y="337" width="126" height="113" rx="20" fill="white" />
-        <circle cx="315" cy="173" r="50" fill="#FF64CB" />
-        <circle cx="189" cy="282" r="50" fill="#00F7FF" />
+        <rect
+          class="square-anim"
+          x="126"
+          y="113"
+          width="126"
+          height="113"
+          rx="20"
+          fill="white"
+        />
+        <rect
+          class="square-anim"
+          x="126"
+          y="337"
+          width="126"
+          height="113"
+          rx="20"
+          fill="white"
+        />
+        <circle class="square-anim" cx="315" cy="173" r="50" fill="#FF64CB" />
+        <circle class="square-anim" cx="189" cy="282" r="50" fill="#00F7FF" />
       </svg>
     </div>
 
@@ -202,5 +242,78 @@
         <img src="images/ktp 1.jpg" alt="ktpwkwk" />
       </div>
     </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+      integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"
+      integrity="sha512-wK2NuxEyN/6s53M8G7c6cRUXvkeV8Uh5duYS06pAdLq4ukc72errSIyyGQGYtzWEzvVGzGSWg8l79e0VkTJYPw=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      var tl = gsap.timeline();
+
+      tl.from(".content", {
+        y: "-30",
+        opacity: 0,
+        duration: 2,
+        ease: Power4.easeOut,
+      });
+      tl.from(
+        ".stagger1",
+        {
+          opacity: 0,
+          y: -50,
+          stagger: 0.3,
+          ease: Power4.easeOut,
+          duration: 2,
+        },
+        "-=1,5"
+      );
+      tl.from(
+        ".hero-design",
+        {
+          opacity: 0,
+          y: 50,
+          ease: Power4.easeOut,
+          duration: 1,
+        },
+        "-=1.5"
+      );
+
+      gsap.from(".square-anim", {
+        stagger: 0.2,
+        scale: 0.1,
+        duration: 1,
+        ease: Back.easeOut.config(1.7),
+      });
+
+      gsap.from(".transition2", {
+        scrollTrigger: {
+          trigger: ".transition2",
+          start: "top bottom",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.3,
+      });
+
+      gsap.from(".transition3", {
+        scrollTrigger: {
+          trigger: ".transition3",
+          start: "top bottom",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.9,
+      });
+    </script>
   </body>
 </html>
